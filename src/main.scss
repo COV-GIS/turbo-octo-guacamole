@@ -1,0 +1,217 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// vernonia brand colors and variables
+/////////////////////////////////////////////////////////////////////////////////////////
+$brand: #6b9560;
+$brand-hover: darken($brand, 7.5);
+$brand-press: darken($brand, 13);
+$link-underline: rgba($brand-press, 0.4);
+$brand-dark: #44693d;
+$brand-popup-button-hover-background: rgba(
+  $color: $brand,
+  $alpha: 0.05
+);
+$brand-popup-selected-background: rgba(
+  $color: $brand,
+  $alpha: 0.2
+);
+$font-family: "Roboto", sans-serif;
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// arcgis variables and mixins
+/////////////////////////////////////////////////////////////////////////////////////////
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_color.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_mixins.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_layout.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_sizes.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_type.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/icons/style.scss";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// all styles for the view and view ui
+/////////////////////////////////////////////////////////////////////////////////////////
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_View.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_Overlay.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_OverlayItem.scss";
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/_Ui.scss";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// widgets used by vernonia apps
+/////////////////////////////////////////////////////////////////////////////////////////
+$include_Attachments: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Attachments.scss";
+
+// consider a custom attribution component backed by AttributionViewModel
+$include_Attribution: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Attribution.scss";
+
+// consider a custom basemap toggle component more like google maps with vernonia basemaps and symbology switching baked in
+$include_BasemapToggle: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_BasemapToggle.scss";
+
+$include_ElevationProfile: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_ElevationProfile.scss";
+
+$include_LayerList: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_LayerList.scss";
+
+$include_Legend: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Legend.scss";
+
+.esri-legend {
+  padding: 0;
+  // disable weird focusing with legend inside calcite component
+  * {
+    pointer-events: none;
+  }
+
+  * {
+    font-size: var(--calcite-font-size--2);
+    font-weight: 100;
+  }
+
+  .esri-legend__service {
+    padding: 6px 7.5px;
+  }
+
+  .esri-legend__layer-table {
+    margin-bottom: 4px;
+  }
+
+  .esri-legend__layer-cell--symbols {
+    padding: 0;
+  }
+
+  .esri-legend__symbol {
+    svg {
+      transform: scale(75%);
+    }
+  }
+
+  .esri-widget__heading {
+    margin-bottom: 0.25rem;
+  }
+}
+
+$include_Search: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Search.scss";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// popup and features
+/////////////////////////////////////////////////////////////////////////////////////////
+$include_Popup: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Popup.scss";
+
+.esri-widget__heading.esri-features__heading {
+  color: $font-color;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+$include_Feature: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Feature.scss";
+
+$include_FeatureContent: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_FeatureContent.scss";
+
+$include_FeatureForm: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_FeatureForm.scss";
+
+$include_FeatureMedia: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_FeatureMedia.scss";
+
+$include_Features: true;
+@import "./../node_modules/@arcgis/core/assets/esri/themes/base/widgets/_Features.scss";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// overrides
+/////////////////////////////////////////////////////////////////////////////////////////
+// browsers have gotten weird with the focused view outline
+// may no longer be needed as of 4.28
+.esri-view .esri-view-surface--inset-outline:focus::after {
+  outline: none !important;
+  outline-offset: 0;
+}
+
+.esri-view .esri-view-surface::after {
+  outline: none !important;
+  outline-offset: 0;
+}
+
+// lock out attribution
+.esri-attribution * {
+  user-select: none;
+}
+
+// tighten up ui
+.esri-ui-top-right {
+  top: -5px;
+  right: -5px;
+}
+
+.esri-ui-top-left {
+  top: -5px;
+  left: -5px;
+}
+
+.esri-ui-bottom-left {
+  bottom: -5px;
+  left: -5px;
+}
+
+.esri-ui-bottom-right {
+  bottom: -5px;
+  right: -5px;
+}
+
+// smaller basemap toggle
+.esri-basemap-toggle {
+  width: 59px;
+  height: 59px;
+  .esri-basemap-toggle__container,
+  .esri-basemap-toggle__image {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--calcite-border-radius);
+  }
+}
+
+// table
+.esri-widget__table {
+  background-color: transparent;
+}
+
+.esri-widget__table tr th {
+  border-right: 3px solid rgba($brand, 0.125);
+}
+
+.esri-widget__table tr:nth-child(odd) {
+  background-color: rgba($brand, 0.05);
+}
+
+.esri-widget__table tr:nth-child(even) {
+  background-color: rgba($color: #ffffff, $alpha: 0) !important;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// minimal styles for vernonia colors
+/////////////////////////////////////////////////////////////////////////////////////////
+:root,
+.calcite-mode-light,
+*.calcite-mode-light {
+  --calcite-color-brand: #{$brand};
+  --calcite-color-brand-dark: #{$brand-dark}; // custom vernonia color var
+  --calcite-color-brand-hover: #{$brand-hover};
+  --calcite-color-brand-press: #{$brand-press};
+  --calcite-color-brand-underline: #{$link-underline};
+  --calcite-sans-family: #{$font-family};
+  --calcite-color-text-link: #{$brand-hover};
+}
+
+html,
+body,
+#map-view {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
